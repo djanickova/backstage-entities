@@ -1,0 +1,40 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: gitlab-scaffolder-create-issue-e2e
+  title: GitLab create issue E2E
+  description: Creates a GitLab issue via gitlab:issues:create
+spec:
+  owner: user:guest
+  type: service
+  parameters:
+    - title: Issue details
+      required:
+        - projectId
+        - issueTitle
+        - repoUrl
+      properties:
+        projectId:
+          title: Project ID
+          type: number
+          description: Numeric GitLab project ID
+        issueTitle:
+          title: Issue title
+          type: string
+        repoUrl:
+          title: Repository Location
+          type: string
+          description: GitLab repo URL in scaffolder format
+  steps:
+    - id: create-issue
+      name: Create GitLab issue
+      action: gitlab:issues:create
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        projectId: ${{ parameters.projectId }}
+        title: ${{ parameters.issueTitle }}
+        description: Created by GitLab scaffolder E2E test
+  output:
+    links:
+      - title: Issue
+        url: ${{ steps.create-issue.output.issueUrl }}
