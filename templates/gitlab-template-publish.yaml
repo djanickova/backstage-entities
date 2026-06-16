@@ -44,7 +44,6 @@ spec:
       name: Publish to GitLab
       action: publish:gitlab
       input:
-        description: GitLab scaffolder publish E2E
         repoUrl: gitlab.com?repo=${{ parameters.projectName }}&owner=${{ parameters.groupPath }}
         defaultBranch: main
         gitCommitMessage: initial commit
