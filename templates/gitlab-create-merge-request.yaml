@@ -29,7 +29,7 @@ spec:
       name: Fetch change file
       action: fetch:plain
       input:
-        url: https://raw.githubusercontent.com/djanickova/backstage-entities/main/templates/gitlab-create-merge-request.yaml
+        url: ./content/e2e-mr-change.yaml
         targetPath: e2e-mr-change.yaml
     - id: create-mr
       name: Create merge request
