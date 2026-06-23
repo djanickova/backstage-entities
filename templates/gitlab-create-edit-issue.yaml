@@ -40,10 +40,10 @@ spec:
       input:
         repoUrl: ${{ parameters.repoUrl }}
         projectId: ${{ parameters.projectId }}
-        issueIid: ${{ steps.create-issue.output.issueIid }}
+        issueIid: ${{ steps['create-issue'].output.issueIid }}
         title: ${{ parameters.issueTitle }}-edited
         description: Updated by GitLab scaffolder E2E test
   output:
     links:
       - title: Issue
-        url: ${{ steps.edit-issue.output.issueUrl }}
+        url: ${{ steps['edit-issue'].output.issueUrl }}
